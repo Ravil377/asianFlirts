@@ -655,11 +655,38 @@
       containerGirl.append(element);
     });
     const catalog = document.querySelector('.catalog');
-    let formActive = false;
-    catalog.addEventListener('scroll', () => {
-      let isCatalog = catalogContainer.classList.contains('catalog__main-container_hidden');
+    let formActive = false; // catalog.addEventListener('scroll', () => {
+    //     let isCatalog = catalogContainer.classList.contains('catalog__main-container_hidden');
+    //     console.log(containerGirl.scrollHeight);
+    //     let heightContainer = containerGirl.scrollHeight - 600;
+    //     if(catalog.scrollTop > heightContainer && !formActive && !isCatalog) {
+    //         console.log('scroll');
+    //         formActive = true;
+    //         catalog.querySelector('.catalog__loader').classList.add('catalog__loader_active');
+    //         setTimeout(() => {
+    //             catalog.querySelector('.catalog__loader').classList.remove('catalog__loader_active');
+    //             setTimeout(() => {
+    //                 catalog.querySelector('.catalog__form').style.display = 'flex';
+    //                 setTimeout(() => {
+    //                     catalog.querySelector('.catalog__form').classList.add('catalog__form_active');
+    //                     document.querySelector('[data-id="register"]').scrollIntoView({
+    //                         behavior: 'smooth',
+    //                         block: 'start'
+    //                     });
+    //                 }, 1000);
+    //             }, 1000);
+    //         }, 4000);
+    //     };
+    // })
 
-      if (catalog.scrollTop > 900 && !formActive && !isCatalog) {
+    const option = {
+      root: document.querySelector('#viewport'),
+      rootMargin: '0px',
+      threshold: [0, 0.5]
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      if (document.querySelector('.main_hidden') && !formActive) {
+        catalogContainer.classList.contains('catalog__main-container_hidden');
         formActive = true;
         catalog.querySelector('.catalog__loader').classList.add('catalog__loader_active');
         setTimeout(() => {
@@ -676,7 +703,9 @@
           }, 1000);
         }, 4000);
       }
-    });
+    }, option);
+    const obs = document.querySelector('.catalog__observer');
+    observer.observe(obs);
 
     const appHeight = () => {
       const doc = document.documentElement;
