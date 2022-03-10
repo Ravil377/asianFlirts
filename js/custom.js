@@ -111,8 +111,8 @@
       }
     });
     buttonUnlock.addEventListener('click', () => {
-      document.querySelector('.main').classList.add('main_hidden'); // document.querySelector('.footer').style.position = 'unset';
-
+      document.querySelector('.main').classList.add('main_hidden');
+      document.querySelector('.footer').style.position = 'unset';
       setTimeout(() => {
         formActive = false;
       }, 500);
