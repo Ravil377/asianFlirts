@@ -398,10 +398,6 @@ template {
     position: relative;
 }
 
-.main .main_hidden ~ .catalog .footer {
-    position: unset;
-}
-
 .main_hidden {
     position: absolute;
     animation: fadeOutLeft;
@@ -455,9 +451,6 @@ template {
     background: #2b010b;
     width: 100%;
     padding: 32px 0 28px 0;
-    position: fixed;
-    bottom: 0;
-    z-index: 3;
 }
 
 .footer .container {
