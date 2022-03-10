@@ -659,7 +659,7 @@
         let div = document.createElement('div');
         div.classList.add('catalog__image');
         let image = document.createElement('img');
-        image.src = photo;
+        image.src = photo.toLowerCase();
         image.alt = girl.info;
         div.append(image);
         element.querySelector('.catalog__image-container-js').append(div);
