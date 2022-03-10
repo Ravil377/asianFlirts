@@ -613,7 +613,7 @@ template {
 .catalog__image-container {
     display: -ms-grid;
     display:     grid;
-    min-height: 300px;
+    min-height: 284px;
 }
 
 .catalog__image img {
@@ -2932,6 +2932,10 @@ template {
     .catalog__main-container ul {
         grid-row-gap: 20px;
         grid-column-gap: 20px;
+    }
+
+    .catalog__image-container {
+        min-height: 350px;
     }
 
     .profile__avatar {
