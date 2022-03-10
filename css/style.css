@@ -398,6 +398,10 @@ template {
     position: relative;
 }
 
+.main .main_hidden ~ .catalog .footer {
+    position: unset;
+}
+
 .main_hidden {
     position: absolute;
     animation: fadeOutLeft;
@@ -449,10 +453,15 @@ template {
 .footer {
     z-index: 2;
     background: #2b010b;
-    -ms-transform: translateY(-1px);
-        transform: translateY(-1px);
     width: 100%;
     padding: 32px 0 28px 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+}
+
+.footer .container {
+    height: auto;
 }
 
 .footer ul {
@@ -491,7 +500,7 @@ template {
     position: absolute;
     background: #2b010b;
     width: 100%;
-    height: calc(100% - 80px);
+    height: auto;
     overflow-y: scroll;
 }
 
@@ -858,19 +867,16 @@ template {
 .catalog__loader {
     position: relative;
     opacity: 0;
-    height: 0;
+    max-height: 70px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
     justify-content: center;
     transition: all 3s;
-    margin-bottom: 0;
 }
 
 .catalog__loader_active {
     opacity: 1;
-    max-height: 70px;
-    margin-bottom: 70px;
 }
 
 .catalog__form {
@@ -878,7 +884,7 @@ template {
     max-width: 320px;
     width: 100%;
     opacity: 0;
-    max-height: 310px;
+    max-height: 315px;
     height: 100%;
     overflow: hidden;
     -ms-flex-direction: column;
