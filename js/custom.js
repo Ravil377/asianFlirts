@@ -115,7 +115,7 @@
       document.querySelector('.footer').style.position = 'unset';
       setTimeout(() => {
         formActive = false;
-      }, 500);
+      }, 200);
     });
     const girls = [{
       id: 1,
@@ -611,7 +611,9 @@
         img.alt = girl.info;
         photosContainer.append(img);
       });
-      setTimeout(() => profile.classList.add('profile_active'), 0);
+      setTimeout(() => {
+        profile.classList.add('profile_active');
+      }, 0);
       document.querySelector('.profile__header').scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -695,32 +697,28 @@
       rootMargin: '0px',
       threshold: [0, 0.5]
     };
-
-    if (!document.querySelector('.profile_active')) {
-      new IntersectionObserver((entries, observer) => {
-        if (document.querySelector('.main_hidden') && !formActive) {
-          catalogContainer.classList.contains('catalog__main-container_hidden');
-          formActive = true;
-          catalog.querySelector('.catalog__loader').classList.add('catalog__loader_active');
+    const obs = document.querySelector('.catalog__loader');
+    const observer = new IntersectionObserver((entries, observer) => {
+      if (document.querySelector('.main_hidden') && !formActive) {
+        catalogContainer.classList.contains('catalog__main-container_hidden');
+        formActive = true;
+        catalog.querySelector('.catalog__loader').classList.add('catalog__loader_active');
+        setTimeout(() => {
+          catalog.querySelector('.catalog__loader').classList.remove('catalog__loader_active');
           setTimeout(() => {
-            catalog.querySelector('.catalog__loader').classList.remove('catalog__loader_active');
+            catalog.querySelector('.catalog__loader').remove();
+            catalog.querySelector('.catalog__form').style.display = 'flex';
             setTimeout(() => {
-              catalog.querySelector('.catalog__loader').remove();
-              catalog.querySelector('.catalog__form').style.display = 'flex';
-              setTimeout(() => {
-                catalog.querySelector('.catalog__form').classList.add('catalog__form_active');
-                document.querySelector('[data-id="register"]').scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }, 1000);
+              catalog.querySelector('.catalog__form').classList.add('catalog__form_active');
+              document.querySelector('[data-id="register"]').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
             }, 1000);
-          }, 4000);
-        }
-      }, option);
-    }
-
-    const obs = document.querySelector('.footer');
+          }, 1000);
+        }, 4000);
+      }
+    }, option);
     observer.observe(obs);
 
     const appHeight = () => {
