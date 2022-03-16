@@ -649,7 +649,6 @@ template {
 }
 
 .catalog__image-container_three {
-    height: calc(100% - 50px);
     -ms-grid-rows: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     -ms-grid-columns: 67.3% 1fr;
@@ -2916,10 +2915,6 @@ template {
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     }
-
-    .catalog__image-container {
-        height: auto;
-    }
 }
 
 @media (min-width: 768px) {
@@ -3017,6 +3012,12 @@ template {
     .profile__gallery {
         grid-row-gap: 30px;
         padding: 20px 38px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .catalog__image-container {
+        height: auto;
     }
 }
 
