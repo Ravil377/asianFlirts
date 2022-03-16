@@ -3017,7 +3017,7 @@ template {
 
 @media (min-width: 1440px) {
     .catalog__image-container {
-        height: auto;
+        height: 500px;
     }
 }
 
