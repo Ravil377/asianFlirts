@@ -613,6 +613,7 @@ template {
 .catalog__image-container {
     display: -ms-grid;
     display:     grid;
+    height: 300px;
 }
 
 .catalog__image {
@@ -2914,6 +2915,10 @@ template {
     .catalog__main-container ul {
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .catalog__image-container {
+        height: auto;
     }
 }
 
