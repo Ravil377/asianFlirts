@@ -116,6 +116,55 @@
       setTimeout(() => {
         formActive = false;
       }, 200);
+      girlsRandom.forEach((girl, idx) => {
+        if (idx > 11) return;
+        const photosPreview = girl.preview;
+        let girlTemplate = document.querySelector('#girl');
+        let element = girlTemplate.content.cloneNode(true);
+        element.querySelector('.catalog__item-js').dataset.id = girl.id;
+        element.querySelector('.catalog__girl-info-js').textContent = girl.info;
+        element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? 'catalog__image-container_three' : 'catalog__image-container_four');
+        let count;
+
+        switch (girl.photo.length) {
+          case 3:
+            count = 3;
+            break;
+
+          case 4:
+            count = 4;
+            break;
+
+          case 5:
+            count = 5;
+            break;
+
+          case 6:
+            count = 6;
+            break;
+
+          case 7:
+            count = 7;
+            break;
+
+          case 8:
+            count = 8;
+            break;
+        }
+
+        element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? `catalog__image-container_three-count-${count}` : `catalog__image-container_four-count-${count}`); // element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? 'catalog__image-container_three' : 'catalog__image-container_four');
+
+        photosPreview.forEach((photo, idx) => {
+          let div = document.createElement('div');
+          div.classList.add('catalog__image');
+          let image = document.createElement('img');
+          image.src = photo;
+          image.alt = girl.info;
+          div.append(image);
+          element.querySelector('.catalog__image-container-js').append(div);
+        });
+        containerGirl.append(element);
+      });
     });
     const girls = [{
       id: 1,
@@ -618,55 +667,6 @@
         behavior: 'smooth',
         block: 'start'
       });
-    });
-    girlsRandom.forEach((girl, idx) => {
-      if (idx > 11) return;
-      const photosPreview = girl.preview;
-      let girlTemplate = document.querySelector('#girl');
-      let element = girlTemplate.content.cloneNode(true);
-      element.querySelector('.catalog__item-js').dataset.id = girl.id;
-      element.querySelector('.catalog__girl-info-js').textContent = girl.info;
-      element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? 'catalog__image-container_three' : 'catalog__image-container_four');
-      let count;
-
-      switch (girl.photo.length) {
-        case 3:
-          count = 3;
-          break;
-
-        case 4:
-          count = 4;
-          break;
-
-        case 5:
-          count = 5;
-          break;
-
-        case 6:
-          count = 6;
-          break;
-
-        case 7:
-          count = 7;
-          break;
-
-        case 8:
-          count = 8;
-          break;
-      }
-
-      element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? `catalog__image-container_three-count-${count}` : `catalog__image-container_four-count-${count}`); // element.querySelector('.catalog__image-container-js').classList.add(girl.preview.length === 3 ? 'catalog__image-container_three' : 'catalog__image-container_four');
-
-      photosPreview.forEach((photo, idx) => {
-        let div = document.createElement('div');
-        div.classList.add('catalog__image');
-        let image = document.createElement('img');
-        image.src = photo;
-        image.alt = girl.info;
-        div.append(image);
-        element.querySelector('.catalog__image-container-js').append(div);
-      });
-      containerGirl.append(element);
     });
     const catalog = document.querySelector('.catalog'); // catalog.addEventListener('scroll', () => {
     //     let isCatalog = catalogContainer.classList.contains('catalog__main-container_hidden');
