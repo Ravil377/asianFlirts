@@ -12,6 +12,7 @@
     const catalogContainer = document.querySelector('.catalog__main-container');
     const modal = document.querySelector('.modal-js');
     const closeModalBtn = document.querySelector('.js-modal-close-button');
+    const userBtn = document.querySelector('.catalog__user-js');
     const no = document.querySelector('.btn-no-js');
     const yes = document.querySelector('.btn-yes-js');
     let formActive = true;
@@ -53,9 +54,12 @@
       }, 200);
     });
 
-    const openModal = () => {
-      modal.classList.add('modal_opened');
-    };
+    const openModal = () => modal.classList.add('modal_opened');
+
+    userBtn.addEventListener("click", () => {
+      openModal();
+      openForm();
+    });
 
     function tgtrimm(str) {
       var ars = str.replace(/[^a-zA-ZА-Яа-яЁё]/gi, '').replace(/\s+/gi, ', ');
